@@ -15,11 +15,20 @@ ActiveRecord::Schema.define(version: 20170506100847) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "sales", force: :cascade do |t|
-    t.string   "title"
-    t.float    "revenue"
+  create_table "products", force: :cascade do |t|
+    t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "sales", force: :cascade do |t|
+    t.integer  "product_id",   null: false
+    t.float    "revenue",      null: false
+    t.date     "trading_date", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["product_id"], name: "index_sales_on_product_id", using: :btree
+  end
+
+  add_foreign_key "sales", "products"
 end

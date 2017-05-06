@@ -1,7 +1,18 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'roo'
+
+file_path = Rails.root.join("db","seeds", "seed.xlsx").to_path
+xlsx = Roo::Excelx.new(file_path)
+current_table = xlsx.sheet(0)
+
+puts 'Upload seed data starting'
+current_table.column(1).each_with_index do |product_name, i|
+  next if i.zero?
+  product = Product.find_or_create_by(name: product_name)
+  break unless product.valid?
+  puts "#{i+1}) product_name: #{product_name}"
+  row = current_table.row(i+1)
+  row.each_with_index do |cell, cell_index|
+    next if cell_index.zero?
+    product.sales.create(revenue: cell, trading_date: current_table.cell(1,cell_index + 1) )
+  end
+end

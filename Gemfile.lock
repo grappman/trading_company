@@ -149,9 +149,9 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
-    rubyXL (3.3.23)
-      nokogiri (>= 1.4.4)
-      rubyzip (>= 1.1.6)
+    roo (2.7.1)
+      nokogiri (~> 1)
+      rubyzip (~> 1.1, < 2.0.0)
     rubyzip (1.2.1)
     sass (3.4.23)
     sass-rails (5.0.6)
@@ -211,7 +211,7 @@ DEPENDENCIES
   pg
   puma
   rails (= 5.0.2)
-  rubyXL
+  roo
   sass-rails
   spirit_hands
   turbolinks
