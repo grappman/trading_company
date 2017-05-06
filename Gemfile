@@ -10,6 +10,7 @@ gem 'jquery-rails'                              # Use jquery as the JavaScript l
 gem 'turbolinks'                                # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'inherited_resources'                       # Inherited Resources speeds up development by making your controllers inherit all restful actions so you just have to focus on what is important.
 gem 'active_model_serializers'                  # ActiveModelSerializers brings convention over configuration to your JSON generation.
+gem 'rubyXL'                                    # This gem supports operating on xlsx files (Open XML format).
 
 group :development do
   gem 'web-console'                             # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
