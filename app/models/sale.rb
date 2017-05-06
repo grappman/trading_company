@@ -4,6 +4,9 @@ class Sale < ApplicationRecord
 
   validates :trading_date,
             :revenue,
+            :product_id,
             presence: true
 
+  validates :trading_date,
+            uniqueness: { scope: :product_id }
 end
